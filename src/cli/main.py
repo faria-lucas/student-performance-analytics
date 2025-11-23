@@ -1,6 +1,6 @@
 # src/cli/main.py
 from database.models import Student
-from database.queries import create_students_table, insert_student, get_all_students, delete_student_by_id
+from database.queries import create_students_table, insert_student, get_all_students, delete_student_by_id, get_student_by_id
 
 def show_menu():
     print("\n=== Student Performance CLI ===")
@@ -15,12 +15,26 @@ def handle_create_table():
     print("Tabela 'students' criada/verificada com sucesso.")
 
 def handle_insert_student():
-    student_id = int(input("Student ID: "))
+    try:
+        student_id = int(input("Student ID: "))
+    except ValueError:
+        print("ID inválido. Digite um número inteiro.")
+        return
+
     name = input("Nome: ")
-    age = int(input("Idade: "))
+    try:
+        age = int(input("Idade: "))
+    except ValueError:
+        print("Idade inválida. Digite um número inteiro.")
+        return
+
     gender = input("Gênero: ")
     subject = input("Disciplina: ")
-    marks = int(input("Nota: "))
+    try:
+        marks = int(input("Nota: "))
+    except ValueError:
+        print("Nota inválida. Digite um número inteiro.")
+        return
 
     student = Student(
         student_id=student_id,
@@ -30,8 +44,13 @@ def handle_insert_student():
         subject=subject,
         marks=marks,
     )
-    insert_student(student)
-    print("Estudante inserido com sucesso!")
+
+    inserted = insert_student(student)
+    if inserted:
+        print("Estudante inserido com sucesso!")
+    else:
+        print(f"Já existe um estudante com o ID {student_id}. Escolha outro ID.")
+
 
 def handle_list_students():
     students = get_all_students()
