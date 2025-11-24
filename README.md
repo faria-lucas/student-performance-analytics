@@ -76,7 +76,7 @@ student-performance-analytics/
 1. Clone o repositório
 
 ```python
-git clone https://github.com/SEU_USUARIO/student-performance-analytics.git
+git clone https://github.com/faria-lucas/student-performance-analytics.git
 cd student-performance-analytics
 ```
 
