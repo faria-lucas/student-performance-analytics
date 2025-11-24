@@ -102,3 +102,31 @@ def get_student_by_id(student_id: int) -> Optional[Student]:
         subject=row[4],
         marks=row[5],
     )
+
+def update_student(student: Student) -> bool:
+    """
+    Atualiza os dados de um estudante com base no student_id.
+    Retorna True se alguma linha foi atualizada, False caso contrário.
+    """
+    query = """
+    UPDATE students
+    SET name = %s,
+        age = %s,
+        gender = %s,
+        subject = %s,
+        marks = %s
+    WHERE student_id = %s;
+    """
+    values = (
+        student.name,
+        student.age,
+        student.gender,
+        student.subject,
+        student.marks,
+        student.student_id,
+    )
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(query, values)
+            return cur.rowcount > 0

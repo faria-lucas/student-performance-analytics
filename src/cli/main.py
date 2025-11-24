@@ -1,6 +1,12 @@
 # src/cli/main.py
 from database.models import Student
-from database.queries import create_students_table, insert_student, get_all_students, delete_student_by_id, get_student_by_id
+from database.queries import (create_students_table, 
+                              insert_student, 
+                              get_all_students, 
+                              delete_student_by_id, 
+                              get_student_by_id,
+                              update_student,
+)
 
 def show_menu():
     print("\n=== Student Performance CLI ===")
@@ -8,6 +14,7 @@ def show_menu():
     print("2. Inserir novo estudante")
     print("3. Listar estudantes")
     print("4. Deletar estudante por ID")
+    print("5. Atualizar estudante por ID")
     print("0. Sair")
 
 def handle_create_table():
@@ -90,11 +97,87 @@ def main():
             handle_list_students()
         elif choice == "4":
             handle_delete_student()
+        elif choice == "5":
+            handle_update_student()
         elif choice == "0":
             print("Saindo...")
             break
         else:
             print("Opção inválida. Tente novamente.")
+
+def handle_update_student():
+    try:
+        student_id = int(input("Informe o ID do estudante a ser atualizado: "))
+    except ValueError:
+        print("ID inválido. Digite um número inteiro.")
+        return
+
+    existing = get_student_by_id(student_id)
+    if existing is None:
+        print(f"Nenhum estudante encontrado com ID {student_id}.")
+        return
+
+    print("\nDados atuais do estudante:")
+    print(f"ID: {existing.student_id}")
+    print(f"Nome: {existing.name}")
+    print(f"Idade: {existing.age}")
+    print(f"Gênero: {existing.gender}")
+    print(f"Disciplina: {existing.subject}")
+    print(f"Nota: {existing.marks}")
+
+    print("\nDigite os novos valores. Deixe em branco para manter o valor atual.\n")
+
+    # Nome
+    new_name = input(f"Nome [{existing.name}]: ").strip()
+    if not new_name:
+        new_name = existing.name
+
+    # Idade
+    new_age_input = input(f"Idade [{existing.age}]: ").strip()
+    if not new_age_input:
+        new_age = existing.age
+    else:
+        try:
+            new_age = int(new_age_input)
+        except ValueError:
+            print("Idade inválida. Mantendo valor atual.")
+            new_age = existing.age
+
+    # Gênero
+    new_gender = input(f"Gênero [{existing.gender}]: ").strip()
+    if not new_gender:
+        new_gender = existing.gender
+
+    # Disciplina
+    new_subject = input(f"Disciplina [{existing.subject}]: ").strip()
+    if not new_subject:
+        new_subject = existing.subject
+
+    # Nota
+    new_marks_input = input(f"Nota [{existing.marks}]: ").strip()
+    if not new_marks_input:
+        new_marks = existing.marks
+    else:
+        try:
+            new_marks = int(new_marks_input)
+        except ValueError:
+            print("Nota inválida. Mantendo valor atual.")
+            new_marks = existing.marks
+
+    updated_student = Student(
+        student_id=existing.student_id,
+        name=new_name,
+        age=new_age,
+        gender=new_gender,
+        subject=new_subject,
+        marks=new_marks,
+    )
+
+    updated = update_student(updated_student)
+    if updated:
+        print(f"Estudante com ID {student_id} atualizado com sucesso.")
+    else:
+        print("Nenhuma alteração foi aplicada.")
 
 if __name__ == "__main__":
     main()
