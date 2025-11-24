@@ -28,8 +28,9 @@ Este projeto demonstra um fluxo real de Engenharia de Dados:
 
 ---
 
-**🧱 Estrutura do Projeto**
+## 🧱 Estrutura do Projeto
 
+```mermaid
 student-performance-analytics/
 ├── database/
 │   ├── database.py         # conexão com Postgres
@@ -49,8 +50,9 @@ student-performance-analytics/
 ├── README.md
 ├── pyproject.toml
 └── uv.lock
+```
 
-**🛠️ Stack utilizada**
+🛠️ Stack utilizada
 
 - Python 3.11
 - PostgreSQL
@@ -60,7 +62,7 @@ student-performance-analytics/
 - psycopg2
 - Jupyter Notebook
 
-**▶️ Como rodar o projeto**
+▶️ Como rodar o projeto
 1. Clone o repositório
 
 ```python
@@ -108,13 +110,12 @@ Menu exibido:
 6. Ver resumo de analytics
 0. Sair
 
-6. Executar o módulo de analytics diretamente
+Executar o módulo de analytics diretamente
 ```bash
 python -m src.analytics.marks_analysis
 ```
 
-7. Abrir o notebook EDA
-jupyter notebook
+Abrir o notebook EDA jupyter notebook
 
 Abra:
 
