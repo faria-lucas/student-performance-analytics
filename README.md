@@ -28,9 +28,19 @@ Este projeto demonstra um fluxo real de Engenharia de Dados:
 
 ---
 
-## 🧱 Estrutura do Projeto
+## 🏛️ Arquitetura do Projeto
 
 ```mermaid
+flowchart LR
+    A[CLI / Notebook] --> B[Camada de Queries]
+    B --> C[(PostgreSQL)]
+    C --> B
+    B --> D[Analytics Module]
+    D --> A
+```
+
+## 🧱 Estrutura do Projeto
+```
 student-performance-analytics/
 ├── database/
 │   ├── database.py         # conexão com Postgres
