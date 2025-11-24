@@ -8,6 +8,8 @@ from database.queries import (create_students_table,
                               update_student,
 )
 
+from src.analytics.marks_analysis import print_analytics_summary
+
 def show_menu():
     print("\n=== Student Performance CLI ===")
     print("1. Criar/verificar tabela students")
@@ -15,6 +17,7 @@ def show_menu():
     print("3. Listar estudantes")
     print("4. Deletar estudante por ID")
     print("5. Atualizar estudante por ID")
+    print("6. Ver resumo de analytics")
     print("0. Sair")
 
 def handle_create_table():
@@ -83,6 +86,9 @@ def handle_delete_student():
     else:
         print(f"Nenhum estudante encontrado com ID {student_id}.")
 
+def handle_show_analytics():
+    print_analytics_summary(top_n=5)
+
 
 def main():
     while True:
@@ -99,6 +105,8 @@ def main():
             handle_delete_student()
         elif choice == "5":
             handle_update_student()
+        elif choice == "6":
+            handle_show_analytics() 
         elif choice == "0":
             print("Saindo...")
             break
