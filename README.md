@@ -151,6 +151,29 @@ notebooks/exploratory_analysis.ipynb
 - Estrutura pensada para escalabilidade (API FastAPI pode ser adicionada depois).
 - Fluxo completo de engenharia de dados.
 
+---
+
+## 🚀 API – FastAPI Layer (CRUD sobre PostgreSQL)
+
+Este projeto inclui uma API REST completa construída com **FastAPI**, utilizando a mesma
+camada de dados do CLI. A API expõe endpoints para criar, consultar, atualizar e deletar
+estudantes no banco PostgreSQL.
+
+A API é útil para:
+- integrar com front-ends (React, Streamlit, Next.js)
+- automações e integrações externas
+- consumo por outros serviços
+
+---
+
+### ▶️ Como iniciar a API
+
+Com o ambiente virtual ativado:
+
+```bash
+uvicorn src.api.main:app --reload --port 8000
+```
+
 **📄 Licença**
 
 MIT License.
