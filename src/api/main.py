@@ -14,6 +14,17 @@ from database.queries import (
     delete_student_by_id,
 )
 
+import logging
+
+# Logger
+logger = logging.getLogger("api")
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+)
+
+
 app = FastAPI(
     title="Student Performance API",
     description="API para gerenciamento e análise de desempenho de estudantes.",
@@ -83,6 +94,7 @@ def merge_student_update(
 
 @app.get("/students", response_model=List[StudentResponse])
 def list_students():
+    logger.info("[API] GET /students")
     """Lista todos os estudantes."""
     students = get_all_students()
     return [domain_to_response(s) for s in students]

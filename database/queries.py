@@ -2,6 +2,10 @@
 from typing import List, Optional
 from .database import get_connection
 from .models import Student
+import logging
+
+# Logger
+logger = logging.getLogger("queries")
 
 def create_students_table():
     query = """
@@ -50,6 +54,7 @@ def insert_student(student: Student) -> bool:
     return True
 
 def get_all_students() -> List[Student]:
+    logger.info("[DB] Executing query: SELECT * FROM students")
     query = "SELECT student_id, name, age, gender, subject, marks FROM students;"
     with get_connection() as conn:
         with conn.cursor() as cur:
