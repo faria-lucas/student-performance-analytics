@@ -1,7 +1,7 @@
 # 🎓 Student Performance Analytics — Data Engineering Project
 
 Um projeto completo de **Data Engineering + Analytics**, construído do zero utilizando  
-**PostgreSQL + Python + CLI + Analytics + Jupyter Notebook**.
+**PostgreSQL + Python + CLI + Analytics + Jupyter Notebook + API + Dashboard**.
 
 Este projeto demonstra um fluxo real de Engenharia de Dados:
 
