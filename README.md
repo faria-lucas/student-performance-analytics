@@ -25,18 +25,20 @@ Este projeto demonstra um fluxo real de Engenharia de Dados:
   - Estatísticas gerais  
 - Criar um **Notebook de EDA (Exploratory Data Analysis)** usando Pandas
 - Mostrar uma arquitetura limpa e modular para portfólio
-
+- Construir uma **API REST com FastAPI** sobre o banco PostgreSQL
+- Criar um **Dashboard interativo com Streamlit**, consumindo a API
+- Demonstrar comunicação entre serviços (UI → API → Banco)
 ---
 
 ## 🏛️ Arquitetura do Projeto
 
 ```mermaid
 flowchart LR
-    A[CLI / Notebook] --> B[Camada de Queries]
-    B --> C[(PostgreSQL)]
-    C --> B
-    B --> D[Analytics Module]
-    D --> A
+    UI[Streamlit Dashboard] --> API[FastAPI]
+    CLI[CLI / Analytics] --> Q[Queries Layer]
+    NB[Jupyter Notebook] --> Q
+    API --> Q
+    Q --> DB[(PostgreSQL)]
 ```
 
 ## 🧱 Estrutura do Projeto
@@ -46,13 +48,20 @@ student-performance-analytics/
 │   ├── database.py         # conexão com Postgres
 │   ├── models.py           # dataclass Student
 │   └── queries.py          # CRUD + consultas
+│   └── dashboard/          # dashboard via Streamlit 
 ├── src/
+│   ├── api/                # FastAPI (camada de aplicação)
+│   │   └── main.py         # API
 │   ├── cli/
 │   │   └── main.py         # interface de linha de comando
-│   └── analytics/
-│       └── marks_analysis.py
+│   ├── analytics/
+│   │   └── marks_analysis.py
+│   └── dashboard/
+│       └── app.py          # Streamlit dashboard (consome a API)
 ├── notebooks/
 │   └── exploratory_analysis.ipynb
+├── scripts/
+│   └── dev.sh          # executa API e dashboard juntos
 ├── docs/
 │   └── architecture.md
 ├── .venv/
@@ -67,6 +76,8 @@ student-performance-analytics/
 - Python 3.11
 - PostgreSQL
 - uv (gerenciamento de ambiente e dependências)
+- FastAPI
+- Streamlit
 - Pandas
 - Matplotlib
 - psycopg2
@@ -148,7 +159,7 @@ notebooks/exploratory_analysis.ipynb
 - Conexão ao PostgreSQL com variáveis seguras via .env.
 - Analytics de verdade com Pandas.
 - Notebook que conecta diretamente no banco.
-- Estrutura pensada para escalabilidade (API FastAPI pode ser adicionada depois).
+- Estrutura pensada para escalabilidade (API FastAPI e Dashboard já integrados).
 - Fluxo completo de engenharia de dados.
 
 ---
@@ -172,6 +183,38 @@ Com o ambiente virtual ativado:
 
 ```bash
 uvicorn src.api.main:app --reload --port 8000
+```
+
+---
+
+## 📊 Dashboard – Streamlit UI
+
+O projeto inclui um **dashboard interativo em Streamlit** que consome a API FastAPI via HTTP,
+seguindo uma separação clara de responsabilidades:
+
+**Dashboard → API → PostgreSQL**
+
+Funcionalidades do dashboard:
+
+- Visualizar todos os estudantes em tabela
+- Filtrar por disciplina e gênero
+- Visualizar média de notas por disciplina
+- Exibir Top N estudantes
+- Criar novos estudantes
+- Atualizar estudantes (partial update)
+- Deletar estudantes por ID
+
+O dashboard **não acessa o banco diretamente**.
+Todo acesso a dados é feito exclusivamente pela API FastAPI.
+
+---
+
+## ▶️ How to run locally (API + Dashboard)
+
+Com o ambiente virtual ativado:
+
+```bash
+./scripts/dev.sh
 ```
 
 **📄 Licença**
