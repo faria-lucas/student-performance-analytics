@@ -1,36 +1,39 @@
-# 🎓 Student Performance Analytics — Data Engineering Project
+# 🎓 Student Performance Analytics, Data Engineering Project
 
-Um projeto completo de **Data Engineering + Analytics**, construído do zero utilizando  
+A complete **Data Engineering + Analytics** project, built from scratch using
 **PostgreSQL + Python + CLI + Analytics + Jupyter Notebook + API + Dashboard**.
 
-Este projeto demonstra um fluxo real de Engenharia de Dados:
+This project demonstrates a real-world Data Engineering workflow:
 
-**Ingestão → Armazenamento → CRUD → Analytics → Visualização**
+**Ingestion → Storage → CRUD → Analytics → Visualization**
 
 ---
 
-## 📌 Objetivos do Projeto
+## 📌 Project Objectives
 
-- Criar um banco de dados de estudantes no **PostgreSQL**
-- Construir uma aplicação **CLI** para CRUD completo:
-  - Criar tabela
-  - Inserir estudante
-  - Atualizar estudante
-  - Deletar estudante
-  - Listar estudantes
-  - Ver resumo analítico
-- Implementar um módulo de **analytics**
-  - Média por disciplina  
-  - Top N estudantes  
-  - Estatísticas gerais  
-- Criar um **Notebook de EDA (Exploratory Data Analysis)** usando Pandas
-- Mostrar uma arquitetura limpa e modular para portfólio
-- Construir uma **API REST com FastAPI** sobre o banco PostgreSQL
-- Criar um **Dashboard interativo com Streamlit**, consumindo a API
-- Demonstrar comunicação entre serviços (UI → API → Banco)
+* Create a student database using **PostgreSQL**
+* Build a **CLI application** to perform full CRUD operations:
+
+  * Create table
+  * Insert student
+  * Update student
+  * Delete student
+  * List students
+  * View analytics summary
+* Implement an **analytics module**
+
+  * Average score by subject
+  * Top N students
+  * General statistics
+* Create an **EDA (Exploratory Data Analysis) Notebook** using Pandas
+* Showcase a clean and modular architecture for portfolio purposes
+* Build a **REST API with FastAPI** on top of PostgreSQL
+* Create an **interactive dashboard with Streamlit**, consuming the API
+* Demonstrate communication between services (UI → API → Database)
+
 ---
 
-## 🏛️ Arquitetura do Projeto
+## 🏛️ Project Architecture
 
 ```mermaid
 flowchart LR
@@ -41,27 +44,29 @@ flowchart LR
     Q --> DB[(PostgreSQL)]
 ```
 
-## 🧱 Estrutura do Projeto
-```
+---
+
+## 🧱 Project Structure
+
+```bash
 student-performance-analytics/
 ├── database/
-│   ├── database.py         # conexão com Postgres
-│   ├── models.py           # dataclass Student
-│   └── queries.py          # CRUD + consultas
-│   └── dashboard/          # dashboard via Streamlit 
+│   ├── database.py         # PostgreSQL connection
+│   ├── models.py           # Student dataclass
+│   └── queries.py          # CRUD + SQL queries
 ├── src/
-│   ├── api/                # FastAPI (camada de aplicação)
-│   │   └── main.py         # API
+│   ├── api/                # FastAPI (application layer)
+│   │   └── main.py         # API entrypoint
 │   ├── cli/
-│   │   └── main.py         # interface de linha de comando
+│   │   └── main.py         # command-line interface
 │   ├── analytics/
 │   │   └── marks_analysis.py
 │   └── dashboard/
-│       └── app.py          # Streamlit dashboard (consome a API)
+│       └── app.py          # Streamlit dashboard (consumes the API)
 ├── notebooks/
 │   └── exploratory_analysis.ipynb
 ├── scripts/
-│   └── dev.sh          # executa API e dashboard juntos
+│   └── dev.sh              # runs API and dashboard together
 ├── docs/
 │   └── architecture.md
 ├── .venv/
@@ -71,115 +76,141 @@ student-performance-analytics/
 └── uv.lock
 ```
 
-🛠️ Stack utilizada
+---
 
-- Python 3.11
-- PostgreSQL
-- uv (gerenciamento de ambiente e dependências)
-- FastAPI
-- Streamlit
-- Pandas
-- Matplotlib
-- psycopg2
-- Jupyter Notebook
+## 🛠️ Tech Stack
 
-▶️ Como rodar o projeto
-1. Clone o repositório
+* Python 3.11
+* PostgreSQL
+* uv (environment and dependency management)
+* FastAPI
+* Streamlit
+* Pandas
+* Matplotlib
+* psycopg2
+* Jupyter Notebook
 
-```python
+---
+
+## ▶️ How to run the project
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/faria-lucas/student-performance-analytics.git
 cd student-performance-analytics
 ```
 
-2. Criar e ativar ambiente virtual (usando uv)
+---
+
+### 2. Create and activate the virtual environment (using uv)
+
 ```bash
 uv venv .venv
 source .venv/bin/activate
 ```
 
-3. Instalar dependências
+---
+
+### 3. Install dependencies
+
 ```bash
-uv pip install -r requirements.txt  # se você gerar um
+uv pip install -r requirements.txt  # if you generate one
 ```
-# ou
+
+or
+
 ```bash
 uv pip install jupyter pandas matplotlib psycopg2-binary python-dotenv
 ```
 
-4. Criar arquivo .env
+---
 
-Copie o exemplo:
+### 4. Create the `.env` file
+
+Copy the example file:
 
 ```bash
 cp .env.example .env
 ```
 
-Preencha com seus dados do PostgreSQL.
+Fill it with your PostgreSQL credentials.
 
-5. Executar a CLI
+---
+
+### 5. Run the CLI
+
 ```bash
 python -m src.cli.main
 ```
 
-Menu exibido:
+Menu options:
 
-1. Criar/verificar tabela
-2. Inserir estudante
-3. Listar estudantes
-4. Deletar estudante
-5. Atualizar estudante
-6. Ver resumo de analytics
-0. Sair
+1. Create / verify table
+2. Insert student
+3. List students
+4. Delete student
+5. Update student
+6. View analytics summary
+7. Exit
 
-Executar o módulo de analytics diretamente
+---
+
+### Run the analytics module directly
+
 ```bash
 python -m src.analytics.marks_analysis
 ```
 
-Abrir o notebook EDA jupyter notebook
+---
 
-Abra:
+### Open the EDA notebook
 
 ```bash
 notebooks/exploratory_analysis.ipynb
 ```
 
-**📊 Exemplo de perguntas analisadas no notebook**
+---
 
-- Qual disciplina tem melhor média?
-- Qual estudante tem melhor desempenho?
-- A idade influencia nas notas?
-- Como está distribuída a performance geral?
-- Existe diferença por gênero?
+## 📊 Example questions explored in the notebook
 
-**🌟 Destaques Técnicos**
-
-- Projeto 100% modular — camada de dados separada da lógica.
-- CLI profissional usando python -m.
-- Conexão ao PostgreSQL com variáveis seguras via .env.
-- Analytics de verdade com Pandas.
-- Notebook que conecta diretamente no banco.
-- Estrutura pensada para escalabilidade (API FastAPI e Dashboard já integrados).
-- Fluxo completo de engenharia de dados.
+* Which subject has the highest average score?
+* Which student performs best overall?
+* Does age influence performance?
+* How is the overall score distribution?
+* Are there performance differences by gender?
 
 ---
 
-## 🚀 API – FastAPI Layer (CRUD sobre PostgreSQL)
+## 🌟 Technical Highlights
 
-Este projeto inclui uma API REST completa construída com **FastAPI**, utilizando a mesma
-camada de dados do CLI. A API expõe endpoints para criar, consultar, atualizar e deletar
-estudantes no banco PostgreSQL.
-
-A API é útil para:
-- integrar com front-ends (React, Streamlit, Next.js)
-- automações e integrações externas
-- consumo por outros serviços
+* 100% modular project — data layer fully separated from business logic.
+* Professional CLI execution using `python -m`.
+* Secure PostgreSQL connection via environment variables (`.env`).
+* Real analytics implemented with Pandas.
+* Jupyter notebook connected directly to the database.
+* Architecture designed for scalability (FastAPI API and Dashboard already integrated).
+* Complete end-to-end data engineering workflow.
 
 ---
 
-### ▶️ Como iniciar a API
+## 🚀 API — FastAPI Layer (CRUD over PostgreSQL)
 
-Com o ambiente virtual ativado:
+This project includes a complete **REST API built with FastAPI**, using the same
+data access layer as the CLI. The API exposes endpoints to create, retrieve,
+update, and delete students in the PostgreSQL database.
+
+The API can be used for:
+
+* integration with front-ends (React, Streamlit, Next.js)
+* automation and external integrations
+* consumption by other services
+
+---
+
+### ▶️ How to start the API
+
+With the virtual environment activated:
 
 ```bash
 uvicorn src.api.main:app --reload --port 8000
@@ -187,36 +218,38 @@ uvicorn src.api.main:app --reload --port 8000
 
 ---
 
-## 📊 Dashboard – Streamlit UI
+## 📊 Dashboard — Streamlit UI
 
-O projeto inclui um **dashboard interativo em Streamlit** que consome a API FastAPI via HTTP,
-seguindo uma separação clara de responsabilidades:
+The project includes an **interactive Streamlit dashboard** that consumes the FastAPI backend via HTTP,
+following a clear separation of responsibilities:
 
 **Dashboard → API → PostgreSQL**
 
-Funcionalidades do dashboard:
+Dashboard features:
 
-- Visualizar todos os estudantes em tabela
-- Filtrar por disciplina e gênero
-- Visualizar média de notas por disciplina
-- Exibir Top N estudantes
-- Criar novos estudantes
-- Atualizar estudantes (partial update)
-- Deletar estudantes por ID
+* View all students in a table
+* Filter students by subject and gender
+* Visualize average marks by subject
+* Display Top N students
+* Create new students
+* Update students (partial updates)
+* Delete students by ID
 
-O dashboard **não acessa o banco diretamente**.
-Todo acesso a dados é feito exclusivamente pela API FastAPI.
+The dashboard **does not connect directly to the database**.
+All data access is handled exclusively by the FastAPI backend.
 
 ---
 
 ## ▶️ How to run locally (API + Dashboard)
 
-Com o ambiente virtual ativado:
+With the virtual environment activated:
 
 ```bash
 ./scripts/dev.sh
 ```
 
-**📄 Licença**
+---
+
+## 📄 License
 
 MIT License.
