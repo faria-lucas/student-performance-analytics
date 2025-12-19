@@ -1,9 +1,9 @@
 # 🎓 Student Performance Analytics, Data Engineering Project
 
-A complete **Data Engineering + Analytics** project, built from scratch using
+A **Data Engineering + Analytics** project, built using
 **PostgreSQL + Python + CLI + Analytics + Jupyter Notebook + API + Dashboard**.
 
-This project demonstrates a real-world Data Engineering workflow:
+This project demonstrates a Data Engineering workflow:
 
 **Ingestion → Storage → CRUD → Analytics → Visualization**
 
