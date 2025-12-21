@@ -1,4 +1,4 @@
-# 🎓 Student Performance Analytics, Data Engineering Project
+# Student Performance Analytics, Data Engineering Project
 
 A **Data Engineering + Analytics** project, built using
 **PostgreSQL + Python + CLI + Analytics + Jupyter Notebook + API + Dashboard**.
@@ -9,7 +9,7 @@ This project demonstrates a Data Engineering workflow:
 
 ---
 
-## 📌 Project Objectives
+## Project Objectives
 
 * Create a student database using **PostgreSQL**
 * Build a **CLI application** to perform full CRUD operations:
@@ -33,7 +33,7 @@ This project demonstrates a Data Engineering workflow:
 
 ---
 
-## 🏛️ Project Architecture
+## Project Architecture
 
 ```mermaid
 flowchart LR
@@ -46,7 +46,7 @@ flowchart LR
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 ```bash
 student-performance-analytics/
@@ -78,7 +78,7 @@ student-performance-analytics/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * Python 3.11
 * PostgreSQL
@@ -92,7 +92,7 @@ student-performance-analytics/
 
 ---
 
-## ▶️ How to run the project
+## How to run the project
 
 ### 1. Clone the repository
 
@@ -172,7 +172,7 @@ notebooks/exploratory_analysis.ipynb
 
 ---
 
-## 📊 Example questions explored in the notebook
+## Example questions explored in the notebook
 
 * Which subject has the highest average score?
 * Which student performs best overall?
@@ -182,7 +182,7 @@ notebooks/exploratory_analysis.ipynb
 
 ---
 
-## 🌟 Technical Highlights
+## Technical Highlights
 
 * 100% modular project — data layer fully separated from business logic.
 * Professional CLI execution using `python -m`.
@@ -194,7 +194,7 @@ notebooks/exploratory_analysis.ipynb
 
 ---
 
-## 🚀 API: FastAPI Layer (CRUD over PostgreSQL)
+## API: FastAPI Layer (CRUD over PostgreSQL)
 
 This project includes a complete **REST API built with FastAPI**, using the same
 data access layer as the CLI. The API exposes endpoints to create, retrieve,
@@ -208,7 +208,7 @@ The API can be used for:
 
 ---
 
-### ▶️ How to start the API
+### How to start the API
 
 With the virtual environment activated:
 
@@ -218,7 +218,7 @@ uvicorn src.api.main:app --reload --port 8000
 
 ---
 
-## 📊 Dashboard (Streamlit UI)
+## Dashboard (Streamlit UI)
 
 The project includes an **interactive Streamlit dashboard** that consumes the FastAPI backend via HTTP,
 following a clear separation of responsibilities:
@@ -240,7 +240,7 @@ All data access is handled exclusively by the FastAPI backend.
 
 ---
 
-## ▶️ How to run locally (API + Dashboard)
+## How to run locally (API + Dashboard)
 
 With the virtual environment activated:
 
@@ -250,6 +250,6 @@ With the virtual environment activated:
 
 ---
 
-## 📄 License
+## License
 
 MIT License.
