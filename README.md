@@ -194,7 +194,7 @@ notebooks/exploratory_analysis.ipynb
 
 ---
 
-## 🚀 API — FastAPI Layer (CRUD over PostgreSQL)
+## 🚀 API: FastAPI Layer (CRUD over PostgreSQL)
 
 This project includes a complete **REST API built with FastAPI**, using the same
 data access layer as the CLI. The API exposes endpoints to create, retrieve,
@@ -218,7 +218,7 @@ uvicorn src.api.main:app --reload --port 8000
 
 ---
 
-## 📊 Dashboard — Streamlit UI
+## 📊 Dashboard (Streamlit UI)
 
 The project includes an **interactive Streamlit dashboard** that consumes the FastAPI backend via HTTP,
 following a clear separation of responsibilities:
